@@ -1,0 +1,10 @@
+carro
+barco
+helicoptero
+navio
+moto
+bicicleta
+skate
+patins
+aviao
+hoverboard
