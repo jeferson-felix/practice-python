@@ -50,11 +50,25 @@ class ExtratorURL:
     def __eq__(self, other):
         return self.url == other.url
 
+    def conversao(self, moeda_origem, moeda_destino, quantidade):
+        if moeda_origem == 'real' and moeda_destino == 'dolar' and quantidade > 0:
+            return quantidade / valor_dolar
+        elif moeda_origem == 'dolar' and moeda_destino == 'real' and quantidade > 0:
+            return quantidade * valor_dolar
+        else:
+            raise ValueError('Parâmetros Inválidos')
+
 
 extrator_url = ExtratorURL('https://bytebank.com/cambio?moedaOrigem=real&moedaDestino=dolar&quantidade=100')
 extrator_url2 = ExtratorURL('https://bytebank.com/cambio?moedaOrigem=real&moedaDestino=dolar&quantidade=100')
 valor_quantidade = extrator_url.get_valor_parametro('moedaDestino')
+valor_dolar = 4.96
+moeda_origem = extrator_url.get_valor_parametro('moedaOrigem')
+moeda_destino = extrator_url.get_valor_parametro('moedaDestino')
+quantidade = extrator_url.get_valor_parametro('quantidade')
+conversao = extrator_url.conversao(moeda_origem, moeda_destino, float(quantidade))
 
 print(extrator_url)
 print(f'Tamanho da URL: {len(extrator_url)}')
 print(f'URL 1 é igual a URL 2?: {extrator_url == extrator_url}')
+print(f'Quantidade: {float(quantidade):.2f} ({moeda_origem})\nConversão: {conversao:.2f} ({moeda_destino})')
