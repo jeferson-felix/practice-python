@@ -81,6 +81,8 @@ print(conta1 == conta2)
 
 print('')
 
+# Ordenação
+
 idades = [15, 21, 65, 41, 47, 23, 29]
 for i in range(len(idades)):
     print(i, idades[i])
@@ -89,3 +91,8 @@ print('')
 
 for indice, idade in enumerate(idades):
     print(indice, idade)
+
+print('')
+
+sorted(idades)
+print(idades)
