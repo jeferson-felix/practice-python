@@ -78,3 +78,14 @@ conta2 = ContaSalario(37)
 print(conta1 == conta2)
 conta1.deposita(10)
 print(conta1 == conta2)
+
+print('')
+
+idades = [15, 21, 65, 41, 47, 23, 29]
+for i in range(len(idades)):
+    print(i, idades[i])
+
+print('')
+
+for indice, idade in enumerate(idades):
+    print(indice, idade)
