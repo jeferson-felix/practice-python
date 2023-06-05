@@ -1,20 +1,17 @@
-idades = [18, 22, 31, 14]
+class ContaCorrente:
+    def __init__(self, codigo):
+        self.codigo = codigo
+        self.saldo = 0
 
-idades.remove(31)
-idades.append(35)
-idades.extend([44, 51])
+    def deposita(self, valor):
+        self.saldo += valor
 
-for idade in idades:
-    print(idade)
-print('')
+    def __str__(self):
+        return f"[>>Código {self.codigo} Saldo {self.saldo}<<]"
 
-idades_prox_ano = []
-for idade in idades:
-    idades_prox_ano.append(idade+1)
-print(idades_prox_ano, '\n')
 
-idades_prox_ano1 = [(idade+1) for idade in idades]
-print(idades_prox_ano1, '\n')
+conta_do_jef = ContaCorrente(15)
+conta_do_jef.deposita(500)
 
-idade_maior_21 = [idade for idade in idades if idade > 21]
-print(idade_maior_21)
+conta_da_dani = ContaCorrente(47685)
+conta_da_dani.deposita(1000)
