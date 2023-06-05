@@ -1,17 +1,57 @@
-class ContaCorrente:
+from abc import ABCMeta, abstractmethod
+
+
+class Conta(metaclass=ABCMeta):
     def __init__(self, codigo):
-        self.codigo = codigo
-        self.saldo = 0
+        self._codigo = codigo
+        self._saldo = 0
 
     def deposita(self, valor):
-        self.saldo += valor
+        self._saldo += valor
+
+    @abstractmethod
+    def passa_o_mes(self):
+        pass
 
     def __str__(self):
-        return f"[>>Código {self.codigo} Saldo {self.saldo}<<]"
+        return f"[>>Código {self._codigo} Saldo {self._saldo}<<]"
 
 
-conta_do_jef = ContaCorrente(15)
-conta_do_jef.deposita(500)
+class ContaCorrente(Conta):
+    def passa_o_mes(self):
+        self._saldo -= 2
 
-conta_da_dani = ContaCorrente(47685)
-conta_da_dani.deposita(1000)
+
+class ContaPoupanca(Conta):
+    def passa_o_mes(self):
+        self._saldo *= 1.01
+        self._saldo -= 3
+
+
+class ContaIvenstimento(Conta):
+    pass
+
+
+conta16 = ContaCorrente(16)
+conta16.deposita(1000)
+conta16.passa_o_mes()
+print(conta16)
+
+conta17 = ContaPoupanca(17)
+conta17.deposita(1000)
+conta17.passa_o_mes()
+print(conta17)
+
+print('')
+
+conta16 = ContaCorrente(16)
+conta16.deposita(1000)
+conta17 = ContaPoupanca(17)
+conta17.deposita(1000)
+contas = [conta16, conta17]
+
+for conta in contas:
+    conta.passa_o_mes()
+    print(conta)
+
+conta18 = ContaIvenstimento(18)
