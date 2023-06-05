@@ -32,6 +32,23 @@ class ContaIvenstimento(Conta):
     pass
 
 
+class ContaSalario():
+    def __init__(self, codigo):
+        self._codigo = codigo
+        self._saldo = 0
+
+    def deposita(self, valor):
+        self._saldo += valor
+
+    def __eq__(self, outro):
+        if type(outro) != ContaSalario:
+            return False
+        return self._codigo == outro._codigo and self._saldo == outro._saldo
+
+    def __str__(self):
+        return f"[>>Código {self._codigo} Saldo {self._saldo}<<]"
+
+
 conta16 = ContaCorrente(16)
 conta16.deposita(1000)
 conta16.passa_o_mes()
@@ -54,4 +71,10 @@ for conta in contas:
     conta.passa_o_mes()
     print(conta)
 
-conta18 = ContaIvenstimento(18)
+print('')
+
+conta1 = ContaSalario(37)
+conta2 = ContaSalario(37)
+print(conta1 == conta2)
+conta1.deposita(10)
+print(conta1 == conta2)
