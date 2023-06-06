@@ -19,3 +19,17 @@ print('')
 meu_texto = 'Em linguística a noção de texto é ampla e ainda aberta a uma definição mais precisa'
 
 print(set(meu_texto.split()))
+
+# dict
+aparicoes = {'noção': 1, 'aberta': 1, 'precisa': 1, 'texto': 1}
+
+aparicoes['Jeferson'] = 1
+del aparicoes['aberta']
+
+# for elemento in aparicoes.keys():
+#     print(elemento)
+# for elemento in aparicoes.values():
+#     print(elemento)
+for chave, valor in aparicoes.items():
+    print(chave, '=', valor)
+print('precisa' in aparicoes)
